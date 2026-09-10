@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>K. Siva Naga Kumari | Aspiring Data Analyst & CS Engineer</title>
+  <meta name="description" content="Official 3D portfolio of K. Siva Naga Kumari — B.Tech Computer Science Engineering student and Aspiring Data Analyst. Explore skills in Python, Java, C, Data Analytics, and interactive projects.">
+  <meta name="keywords" content="K. Siva Naga Kumari, Data Analyst, B.Tech CSE, Portfolio, Dhanekula Institute, Python, Java, SQL, Three.js">
+  <meta name="author" content="K. Siva Naga Kumari">
+  
+  <!-- Open Graph / Social Media -->
+  <meta property="og:title" content="K. Siva Naga Kumari | Portfolio">
+  <meta property="og:description" content="Aspiring Data Analyst & Computer Science Engineer. Explore my skills, journey, and projects.">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✨</text></svg>">
+
+  <!-- Google Fonts: Poppins & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- AOS Animation Library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Custom Cursor Elements -->
+  <div class="cursor-dot" id="cursor-dot"></div>
+  <div class="cursor-ring" id="cursor-ring"></div>
+
+  <!-- 3D WebGL Three.js Canvas Container -->
+  <canvas id="webgl-canvas"></canvas>
+  <div class="ambient-glow glow-purple"></div>
+  <div class="ambient-glow glow-cyan"></div>
+
+  <!-- 3D Cube Preloader -->
+  <div id="loader-wrapper">
+    <div class="loader-content">
+      <div class="cube-scene">
+        <div class="cube">
+          <div class="cube-face front"><span>01</span></div>
+          <div class="cube-face back"><span>02</span></div>
+          <div class="cube-face right"><span>03</span></div>
+          <div class="cube-face left"><span>04</span></div>
+          <div class="cube-face top"><span>05</span></div>
+          <div class="cube-face bottom"><span>06</span></div>
+        </div>
+      </div>
+      <div class="loader-text-wrap">
+        <h3 class="loader-title">INITIALIZING <span class="neon-cyan">QUANTUM SPACE</span></h3>
+        <div class="loader-progress-track">
+          <div class="loader-progress-bar" id="loader-bar"></div>
+        </div>
+        <div class="loader-status">
+          <span id="loader-status-text">Loading 3D assets...</span>
+          <span id="loader-percentage">0%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <header id="header">
+    <nav class="navbar glass-nav" id="navbar">
+      <div class="nav-container">
+        <a href="#hero" class="brand-logo magnetic-target">
+          <span class="logo-symbol">&lt;/&gt;</span>
+          <span class="logo-text">SIVA<span class="neon-cyan">.DEV</span></span>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <ul class="nav-menu" id="nav-menu">
+          <li class="nav-item"><a href="#hero" class="nav-link active">Home</a></li>
+          <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
+          <li class="nav-item"><a href="#experience" class="nav-link">Journey</a></li>
+          <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+          <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+
+        <!-- Action CTA -->
+        <div class="nav-actions">
+          <button class="btn btn-sm btn-neon-outline magnetic-target" id="open-resume-btn">
+            <i class="fa-solid fa-file-invoice"></i>
+            <span>Resume</span>
+          </button>
+          
+          <!-- Hamburger Menu Toggle -->
+          <button class="hamburger-btn" id="hamburger-btn" aria-label="Toggle navigation">
+            <span class="bar bar-1"></span>
+            <span class="bar bar-2"></span>
+            <span class="bar bar-3"></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Navigation Drawer -->
+      <div class="mobile-drawer" id="mobile-drawer">
+        <ul class="mobile-menu">
+          <li><a href="#hero" class="mobile-link">Home</a></li>
+          <li><a href="#about" class="mobile-link">About Me</a></li>
+          <li><a href="#skills" class="mobile-link">Skills & Tools</a></li>
+          <li><a href="#experience" class="mobile-link">Education Journey</a></li>
+          <li><a href="#projects" class="mobile-link">Projects</a></li>
+          <li><a href="#contact" class="mobile-link">Contact</a></li>
+          <li class="mobile-cta-wrap">
+            <button class="btn btn-neon-cyan w-full" id="mobile-resume-btn">
+              <i class="fa-solid fa-download"></i> View & Download Resume
+            </button>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ==================== HERO SECTION ==================== -->
+    <section id="hero" class="section hero-section">
+      <div class="container hero-grid">
+        <!-- Hero Text Column -->
+        <div class="hero-text-col" data-aos="fade-right" data-aos-duration="1000">
+          <div class="hero-status-pill">
+            <span class="status-dot"></span>
+            <span>Available for Internships & Data Roles</span>
+          </div>
+
+          <h1 class="hero-title">
+            <span class="hero-greeting">Hi, I'm</span>
+            <span class="hero-name gradient-text">K. Siva Naga Kumari</span>
+          </h1>
+
+          <div class="hero-typed-wrapper">
+            <span class="typed-prefix">&gt; </span>
+            <span class="typed-text" id="typed-text"></span>
+            <span class="typed-cursor">|</span>
+          </div>
+
+          <p class="hero-description">
+            Passionate B.Tech Computer Science Engineering student at <strong class="highlight-text">Dhanekula Institute</strong> with a dedicated focus on <span class="neon-cyan">Data Analytics</span> and software development. Driven to transform complex data into impactful insights and engineer modern digital solutions.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#projects" class="btn btn-neon-purple magnetic-target">
+              <span>View Projects</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <button class="btn btn-glass magnetic-target" id="hero-resume-trigger">
+              <i class="fa-solid fa-arrow-down-to-bracket"></i>
+              <span>Download CV</span>
+            </button>
+            <a href="#contact" class="btn btn-outline-cyan magnetic-target">
+              <i class="fa-regular fa-paper-plane"></i>
+              <span>Let's Talk</span>
+            </a>
+          </div>
+
+          <!-- Hero Highlights / Key Badges -->
+          <div class="hero-metrics-bar">
+            <div class="metric-box">
+              <span class="metric-num">B.Tech</span>
+              <span class="metric-lbl">CSE Expected 2028</span>
+            </div>
+            <div class="metric-divider"></div>
+            <div class="metric-box">
+              <span class="metric-num">3+</span>
+              <span class="metric-lbl">Core Tech (C, Java, Python)</span>
+            </div>
+            <div class="metric-divider"></div>
+            <div class="metric-box">
+              <span class="metric-num">100%</span>
+              <span class="metric-lbl">Analytical Dedication</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero 3D Interactive Profile Card Column -->
+        <div class="hero-card-col" data-aos="fade-left" data-aos-duration="1000">
+          <div class="profile-card-3d" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.4">
+            <div class="card-inner-glow"></div>
+            
+            <div class="profile-card-badge">
+              <i class="fa-solid fa-bolt neon-cyan"></i>
+              <span>Open to Opportunities</span>
+            </div>
+
+            <!-- Profile Avatar / Visual Frame -->
+            <div class="avatar-wrapper">
+              <div class="avatar-halo"></div>
+              <div class="avatar-ring-rotating"></div>
+              <div class="avatar-img-box">
+                <div class="avatar-cyber-core">
+                  <div class="avatar-initials">SK</div>
+                  <div class="avatar-code-ring">DATA • DEV • AI</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card Bio Info -->
+            <div class="profile-card-details">
+              <h3 class="profile-name">K. Siva Naga Kumari</h3>
+              <p class="profile-role">B.Tech Computer Science Engineering</p>
+              <p class="profile-college"><i class="fa-solid fa-graduation-cap"></i> Dhanekula Inst. of Engg. & Tech.</p>
+              
+              <div class="profile-chips">
+                <span class="chip"><i class="fa-brands fa-python"></i> Python</span>
+                <span class="chip"><i class="fa-brands fa-java"></i> Java</span>
+                <span class="chip"><i class="fa-solid fa-chart-line"></i> Data Analytics</span>
+                <span class="chip"><i class="fa-solid fa-database"></i> SQL</span>
+              </div>
+            </div>
+
+            <!-- Floating 3D Stat Badges on Card -->
+            <div class="floating-badge badge-top-right">
+              <i class="fa-solid fa-chart-pie neon-cyan"></i>
+              <div>
+                <strong>Data Insights</strong>
+                <small>Analytics Focus</small>
+              </div>
+            </div>
+
+            <div class="floating-badge badge-bottom-left">
+              <i class="fa-solid fa-brain neon-purple"></i>
+              <div>
+                <strong>Problem Solving</strong>
+                <small>Algorithms & Logic</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll Down Indicator -->
+      <a href="#about" class="scroll-indicator" aria-label="Scroll to About Section">
+        <div class="mouse-icon">
+          <div class="wheel"></div>
+        </div>
+        <span>Scroll Down</span>
+      </a>
+    </section>
+
+    <!-- ==================== ABOUT SECTION ==================== -->
+    <section id="about" class="section about-section">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="section-badge"><i class="fa-solid fa-user-astronaut"></i> Discover</span>
+          <h2 class="section-title">About <span class="gradient-text">Me</span></h2>
+          <p class="section-subtitle">A journey fueled by analytical curiosity, data transformation, and software engineering.</p>
+        </div>
+
+        <div class="about-grid">
+          <!-- Left Column: Narrative Card -->
+          <div class="about-narrative-card glass-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="card-corner-tag">Bio</div>
+            <h3 class="card-heading">
+              Motivated Engineer with an Eye for <span class="neon-cyan">Actionable Data</span>
+            </h3>
+            
+            <p class="narrative-p">
+              I am a detail-oriented B.Tech Computer Science Engineering student at <strong>Dhanekula Institute of Engineering and Technology</strong> (graduating 2028), driven by a deep fascination with how data powers modern decision-making.
+            </p>
+            <p class="narrative-p">
+              My goal is to secure an entry-level position in <strong>Data Analytics and Software Development</strong> where I can apply strong analytical thinking, structured problem-solving, and foundational programming tools to transform raw, complex data into meaningful insights.
+            </p>
+
+            <div class="about-personal-traits">
+              <div class="trait-pill"><i class="fa-solid fa-users"></i> Teamwork</div>
+              <div class="trait-pill"><i class="fa-solid fa-comments"></i> Communication Skills</div>
+              <div class="trait-pill"><i class="fa-solid fa-lightbulb"></i> Problem Solving</div>
+              <div class="trait-pill"><i class="fa-solid fa-smile-beam"></i> Positive Attitude</div>
+              <div class="trait-pill"><i class="fa-solid fa-fire"></i> Initiative</div>
+            </div>
+
+            <!-- Quick Info List -->
+            <div class="about-info-list">
+              <div class="info-item">
+                <i class="fa-solid fa-location-dot neon-cyan"></i>
+                <div>
+                  <span class="info-label">Location:</span>
+                  <span class="info-value">Choragudi, Andhra Pradesh, India</span>
+                </div>
+              </div>
+              <div class="info-item">
+                <i class="fa-solid fa-envelope neon-purple"></i>
+                <div>
+                  <span class="info-label">Email:</span>
+                  <span class="info-value">katikalasiri1729@gmail.com</span>
+                </div>
+              </div>
+              <div class="info-item">
+                <i class="fa-solid fa-phone neon-cyan"></i>
+                <div>
+                  <span class="info-label">Phone:</span>
+                  <span class="info-value">+91 9989586306</span>
+                </div>
+              </div>
+              <div class="info-item">
+                <i class="fa-solid fa-language neon-purple"></i>
+                <div>
+                  <span class="info-label">Languages:</span>
+                  <span class="info-value">Telugu (Native), English (Professional)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Focus Cards Grid -->
+          <div class="about-features-grid">
+            <div class="feature-card glass-card" data-tilt data-aos="fade-up" data-aos-delay="200">
+              <div class="feature-icon-box cyan-glow">
+                <i class="fa-solid fa-chart-simple"></i>
+              </div>
+              <h4>Data Analytics</h4>
+              <p>Passion for gathering, cleaning, and synthesizing datasets to discover patterns and build intuitive visual narratives.</p>
+            </div>
+
+            <div class="feature-card glass-card" data-tilt data-aos="fade-up" data-aos-delay="300">
+              <div class="feature-icon-box purple-glow">
+                <i class="fa-solid fa-code"></i>
+              </div>
+              <h4>Core Programming</h4>
+              <p>Firm grasp of C language fundamentals, Object-Oriented programming in Java, and Python scripting for logic execution.</p>
+            </div>
+
+            <div class="feature-card glass-card" data-tilt data-aos="fade-up" data-aos-delay="400">
+              <div class="feature-icon-box cyan-glow">
+                <i class="fa-solid fa-puzzle-piece"></i>
+              </div>
+              <h4>Analytical Problem Solving</h4>
+              <p>Breaking down multifaceted computing problems into clear, efficient algorithmic steps with high attention to detail.</p>
+            </div>
+
+            <div class="feature-card glass-card" data-tilt data-aos="fade-up" data-aos-delay="500">
+              <div class="feature-icon-box purple-glow">
+                <i class="fa-solid fa-headphones"></i>
+              </div>
+              <h4>Hobbies & Balance</h4>
+              <p>Reading enriching books, strategic casual gaming, and appreciating music to stay energized, creative, and inspired.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SKILLS SECTION ==================== -->
+    <section id="skills" class="section skills-section">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="section-badge"><i class="fa-solid fa-microchip"></i> Capabilities</span>
+          <h2 class="section-title">Technical & <span class="gradient-text">Core Skills</span></h2>
+          <p class="section-subtitle">Crafted with continuous practice, academic excellence, and self-motivated exploration.</p>
+        </div>
+
+        <!-- 3D Tilt Skill Cards Grid -->
+        <div class="skills-card-grid">
+          <!-- Python -->
+          <div class="skill-card glass-card" data-tilt data-tilt-glare data-tilt-max-glare="0.3" data-aos="zoom-in" data-aos-delay="100">
+            <div class="skill-card-top">
+              <div class="skill-icon-3d py-icon">
+                <i class="fa-brands fa-python"></i>
+              </div>
+              <span class="skill-level-badge">Core Focus</span>
+            </div>
+            <h3 class="skill-name">Python</h3>
+            <p class="skill-desc">Data analysis scripts, algorithmic logic, collections, and foundational libraries for data science.</p>
+            <div class="skill-progress-wrap">
+              <div class="progress-info">
+                <span>Proficiency</span>
+                <span class="progress-val">85%</span>
+              </div>
+              <div class="progress-track">
+                <div class="progress-fill" data-progress="85%"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Java -->
+          <div class="skill-card glass-card" data-tilt data-tilt-glare data-tilt-max-glare="0.3" data-aos="zoom-in" data-aos-delay="200">
+            <div class="skill-card-top">
+              <div class="skill-icon-3d java-icon">
+                <i class="fa-brands fa-java"></i>
+              </div>
+              <span class="skill-level-badge">OOP</span>
+            </div>
+            <h3 class="skill-name">Java</h3>
+            <p class="skill-desc">Object-Oriented Programming, classes, inheritance, exception handling, and structured software architecture.</p>
+            <div class="skill-progress-wrap">
+              <div class="progress-info">
+                <span>Proficiency</span>
+                <span class="progress-val">80%</span>
+              </div>
+              <div class="progress-track">
+                <div class="progress-fill" data-progress="80%"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- C Language -->
+          <div class="skill-card glass-card" data-tilt data-tilt-glare data-tilt-max-glare="0.3" data-aos="zoom-in" data-aos-delay="300">
+            <div class="skill-card-top">
+              <div class="skill-icon-3d c-icon">
+                <i class="fa-solid fa-c"></i>
+              </div>
+              <span class="skill-level-badge">Foundational</span>
+            </div>
+            <h3 class="skill-name">C Language</h3>
+            <p class="skill-desc">Procedural programming, memory pointers, arrays, data structures, and algorithmic logic.</p>
+            <div class="skill-progress-wrap">
+              <div class="progress-info">
+                <span>Proficiency</span>
+                <span class="progress-val">85%</span>
+              </div>
+              <div class="progress-track">
+                <div class="progress-fill" data-progress="85%"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Data Analytics & Visualization -->
+          <div class="skill-card glass-card" data-tilt data-tilt-glare data-tilt-max-glare="0.3" data-aos="zoom-in" data-aos-delay="400">
+            <div class="skill-card-top">
+              <div class="skill-icon-3d analytics-icon">
+                <i class="fa-solid fa-chart-pie"></i>
+              </div>
+              <span class="skill-level-badge">Specialization</span>
+            </div>
+            <h3 class="skill-name">Data Analytics</h3>
+            <p class="skill-desc">Exploratory data analysis, statistical indicators, charts, report generation, and data visualization tools.</p>
+            <div class="skill-progress-wrap">
+              <div class="progress-info">
+                <span>Proficiency</span>
+                <span class="progress-val">82%</span>
+              </div>
+              <div class="progress-track">
+                <div class="progress-fill" data-progress="82%"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Problem Solving & Logic -->
+          <div class="skill-card glass-card" data-tilt data-tilt-glare data-tilt-max-glare="0.3" data-aos="zoom-in" data-aos-delay="500">
+            <div class="skill-card-top">
+              <div class="skill-icon-3d logic-icon">
+                <i class="fa-solid fa-brain"></i>
+              </div>
+              <span class="skill-level-badge">Core Strength</span>
+            </div>
+            <h3 class="skill-name">Problem Solving</h3>
+            <p class="skill-desc">Analytical reasoning, debugging complex conditions, algorithmic optimization, and systematic troubleshooting.</p>
+            <div class="skill-progress-wrap">
+              <div class="progress-info">
+                <span>Proficiency</span>
+                <span class="progress-val">90%</span>
+              </div>
+              <div class="progress-track">
+                <div class="progress-fill" data-progress="90%"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Teamwork & Leadership -->
+          <div class="skill-card glass-card" data-tilt data-tilt-glare data-tilt-max-glare="0.3" data-aos="zoom-in" data-aos-delay="600">
+            <div class="skill-card-top">
+              <div class="skill-icon-3d team-icon">
+                <i class="fa-solid fa-people-group"></i>
+              </div>
+              <span class="skill-level-badge">Interpersonal</span>
+            </div>
+            <h3 class="skill-name">Teamwork & Initiative</h3>
+            <p class="skill-desc">Effective communication, active listening, taking proactive ownership, and positive team synergy.</p>
+            <div class="skill-progress-wrap">
+              <div class="progress-info">
+                <span>Proficiency</span>
+                <span class="progress-val">95%</span>
+              </div>
+              <div class="progress-track">
+                <div class="progress-fill" data-progress="95%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Tech Cloud / Badges -->
+        <div class="tech-cloud-box glass-card" data-aos="fade-up">
+          <h4 class="tech-cloud-title">Technologies, Concepts & Tools in My Repertoire</h4>
+          <div class="tech-tags-list">
+            <span class="tech-tag"><i class="fa-brands fa-python"></i> Python 3</span>
+            <span class="tech-tag"><i class="fa-brands fa-java"></i> Java SE</span>
+            <span class="tech-tag"><i class="fa-solid fa-c"></i> C Programming</span>
+            <span class="tech-tag"><i class="fa-solid fa-database"></i> SQL & Relational Databases</span>
+            <span class="tech-tag"><i class="fa-solid fa-chart-line"></i> Data Visualization</span>
+            <span class="tech-tag"><i class="fa-solid fa-table"></i> MS Excel Analytics</span>
+            <span class="tech-tag"><i class="fa-brands fa-html5"></i> HTML5 & CSS3</span>
+            <span class="tech-tag"><i class="fa-brands fa-js"></i> JavaScript</span>
+            <span class="tech-tag"><i class="fa-brands fa-git-alt"></i> Git & Version Control</span>
+            <span class="tech-tag"><i class="fa-solid fa-cubes"></i> Data Structures</span>
+            <span class="tech-tag"><i class="fa-solid fa-calculator"></i> Quantitative Reasoning</span>
+            <span class="tech-tag"><i class="fa-solid fa-comments"></i> Technical Communication</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== JOURNEY / EXPERIENCE TIMELINE ==================== -->
+    <section id="experience" class="section timeline-section">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="section-badge"><i class="fa-solid fa-graduation-cap"></i> Milestones</span>
+          <h2 class="section-title">Education & <span class="gradient-text">Journey</span></h2>
+          <p class="section-subtitle">Academic timeline and continuous milestones shaping my technical foundation.</p>
+        </div>
+
+        <div class="timeline-container">
+          <!-- Central glowing laser line -->
+          <div class="timeline-laser-line" id="timeline-laser"></div>
+
+          <!-- Timeline Item 1: B.Tech CSE -->
+          <div class="timeline-card-item timeline-left" data-aos="fade-right">
+            <div class="timeline-node">
+              <div class="node-inner"></div>
+            </div>
+            <div class="timeline-glass-card glass-card" data-tilt>
+              <div class="timeline-badge-year">2024 — 2028 (Expected)</div>
+              <h3 class="timeline-degree">B.Tech in Computer Science Engineering</h3>
+              <h4 class="timeline-institution">
+                <i class="fa-solid fa-building-columns neon-cyan"></i> Dhanekula Institute of Engineering and Technology
+              </h4>
+              <p class="timeline-summary">
+                Undergraduate program focused on Computer Science Engineering principles, Object-Oriented programming, Algorithms, Database Management Systems, and specialized self-study in Data Analytics.
+              </p>
+              <ul class="timeline-bullets">
+                <li><i class="fa-solid fa-check neon-cyan"></i> Practical coding in C, Java, and Python laboratories.</li>
+                <li><i class="fa-solid fa-check neon-cyan"></i> Active participant in technical workshops, hackathons, and seminars.</li>
+                <li><i class="fa-solid fa-check neon-cyan"></i> Cultivating analytical skills to transform real datasets into visual intelligence.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Timeline Item 2: 12th MPC -->
+          <div class="timeline-card-item timeline-right" data-aos="fade-left">
+            <div class="timeline-node">
+              <div class="node-inner"></div>
+            </div>
+            <div class="timeline-glass-card glass-card" data-tilt>
+              <div class="timeline-badge-year">2020 — 2022</div>
+              <h3 class="timeline-degree">Higher Secondary Education (12th) – MPC</h3>
+              <h4 class="timeline-institution">
+                <i class="fa-solid fa-school neon-purple"></i> KGJC, Movva
+              </h4>
+              <p class="timeline-summary">
+                Completed intermediate education specializing in Mathematics, Physics, and Chemistry (MPC), building sharp logical, mathematical, and analytical reasoning capabilities.
+              </p>
+              <ul class="timeline-bullets">
+                <li><i class="fa-solid fa-check neon-purple"></i> Passed out in 2022 with strong academic standing.</li>
+                <li><i class="fa-solid fa-check neon-purple"></i> Solidified foundational calculus, algebra, and physics principles.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Timeline Item 3: 10th School -->
+          <div class="timeline-card-item timeline-left" data-aos="fade-right">
+            <div class="timeline-node">
+              <div class="node-inner"></div>
+            </div>
+            <div class="timeline-glass-card glass-card" data-tilt>
+              <div class="timeline-badge-year">Passed Out: 2020</div>
+              <h3 class="timeline-degree">Secondary School Certificate (10th)</h3>
+              <h4 class="timeline-institution">
+                <i class="fa-solid fa-book-open neon-cyan"></i> ZPH School, Choragudi
+              </h4>
+              <p class="timeline-summary">
+                Completed high school with comprehensive academics, active participation in school initiatives, sports, and science exhibitions.
+              </p>
+              <ul class="timeline-bullets">
+                <li><i class="fa-solid fa-check neon-cyan"></i> Established key fundamentals in mathematics and science.</li>
+                <li><i class="fa-solid fa-check neon-cyan"></i> Fostered discipline, communication, and teamwork ethics.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Timeline Item 4: Continuous Self-Learning -->
+          <div class="timeline-card-item timeline-right" data-aos="fade-left">
+            <div class="timeline-node">
+              <div class="node-inner"></div>
+            </div>
+            <div class="timeline-glass-card glass-card" data-tilt>
+              <div class="timeline-badge-year">Continuous & Ongoing</div>
+              <h3 class="timeline-degree">Data Analytics & Self-Directed Engineering</h3>
+              <h4 class="timeline-institution">
+                <i class="fa-solid fa-laptop-code neon-purple"></i> Independent Learning & Project Building
+              </h4>
+              <p class="timeline-summary">
+                Continuously advancing technical skills through hands-on project creation, Python data manipulation tutorials, Git version control, and modern software development practices.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== PROJECTS SECTION ==================== -->
+    <section id="projects" class="section projects-section">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="section-badge"><i class="fa-solid fa-rocket"></i> Innovations</span>
+          <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
+          <p class="section-subtitle">Showcasing data analytics dashboards, predictive systems, and software engineering solutions.</p>
+        </div>
+
+        <!-- Project Cards Grid -->
+        <div class="projects-grid">
+          <!-- Project 1: Data Analytics Dashboard -->
+          <div class="project-card glass-card" data-tilt data-tilt-glare data-tilt-max-glare="0.35" data-aos="fade-up" data-aos-delay="100">
+            <div class="project-banner banner-data">
+              <div class="project-badge-top">Data Analytics</div>
+              <div class="project-preview-mockup">
+                <i class="fa-solid fa-chart-column project-banner-icon neon-cyan"></i>
+                <div class="mockup-chart-bars">
+                  <span style="height: 40%;"></span>
+                  <span style="height: 75%;"></span>
+                  <span style="height: 55%;"></span>
+                  <span style="height: 90%;"></span>
+                  <span style="height: 65%;"></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-body">
+              <div class="project-tags">
+                <span class="p-tag">Python</span>
+                <span class="p-tag">Pandas</span>
+                <span class="p-tag">Data Viz</span>
+                <span class="p-tag">SQL</span>
+              </div>
+              <h3 class="project-title">InsightPulse — Sales & KPI Analytics Engine</h3>
+              <p class="project-desc">
+                An interactive data analysis engine that parses complex sales datasets, calculates core KPIs, detects seasonal trends, and produces automated visual charts for decision-makers.
+              </p>
+              
+              <div class="project-highlights">
+                <div><i class="fa-solid fa-bolt neon-cyan"></i> Cleaned & processed 10,000+ data records</div>
+                <div><i class="fa-solid fa-bolt neon-cyan"></i> Interactive trend charts & revenue breakdown</div>
+              </div>
+
+              <div class="project-footer">
+                <button class="btn btn-sm btn-neon-cyan open-project-modal" data-project="insightpulse">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Case Study
+                </button>
+                <a href="#contact" class="btn btn-sm btn-ghost">
+                  <i class="fa-brands fa-github"></i> Repository
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2: Student Performance Predictor -->
+          <div class="project-card glass-card" data-tilt data-tilt-glare data-tilt-max-glare="0.35" data-aos="fade-up" data-aos-delay="200">
+            <div class="project-banner banner-ml">
+              <div class="project-badge-top">Predictive Modeling</div>
+              <div class="project-preview-mockup">
+                <i class="fa-solid fa-brain project-banner-icon neon-purple"></i>
+                <div class="mockup-network-dots">
+                  <span class="dot-n"></span>
+                  <span class="dot-n"></span>
+                  <span class="dot-n"></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-body">
+              <div class="project-tags">
+                <span class="p-tag">Python</span>
+                <span class="p-tag">Data Modeling</span>
+                <span class="p-tag">Statistics</span>
+                <span class="p-tag">Analytics</span>
+              </div>
+              <h3 class="project-title">EduPredict — Academic Performance Analyzer</h3>
+              <p class="project-desc">
+                A statistical analytics solution analyzing student study patterns, attendance metrics, and test scores to forecast semester outcomes and provide personalized guidance.
+              </p>
+
+              <div class="project-highlights">
+                <div><i class="fa-solid fa-bolt neon-purple"></i> Multi-variable correlation analysis</div>
+                <div><i class="fa-solid fa-bolt neon-purple"></i> Early warning alerts for at-risk performance</div>
+              </div>
+
+              <div class="project-footer">
+                <button class="btn btn-sm btn-neon-purple open-project-modal" data-project="edupredict">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Case Study
+                </button>
+                <a href="#contact" class="btn btn-sm btn-ghost">
+                  <i class="fa-brands fa-github"></i> Repository
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3: 3D WebGL Portfolio Platform -->
+          <div class="project-card glass-card" data-tilt data-tilt-glare data-tilt-max-glare="0.35" data-aos="fade-up" data-aos-delay="300">
+            <div class="project-banner banner-webgl">
+              <div class="project-badge-top">Creative Tech</div>
+              <div class="project-preview-mockup">
+                <i class="fa-solid fa-cube project-banner-icon neon-cyan"></i>
+                <div class="mockup-orbital-ring"></div>
+              </div>
+            </div>
+
+            <div class="project-body">
+              <div class="project-tags">
+                <span class="p-tag">Three.js</span>
+                <span class="p-tag">WebGL</span>
+                <span class="p-tag">GSAP</span>
+                <span class="p-tag">CSS3 Glassmorphism</span>
+              </div>
+              <h3 class="project-title">QuantumSphere — 3D Interactive Portfolio</h3>
+              <p class="project-desc">
+                A state-of-the-art personal portfolio featuring real-time WebGL particle physics, 3D wireframe geometries, GSAP ScrollTrigger choreography, and holographic glassmorphism.
+              </p>
+
+              <div class="project-highlights">
+                <div><i class="fa-solid fa-bolt neon-cyan"></i> 60+ FPS dynamic particle mesh</div>
+                <div><i class="fa-solid fa-bolt neon-cyan"></i> 3D mouse parallax & tilt card response</div>
+              </div>
+
+              <div class="project-footer">
+                <button class="btn btn-sm btn-neon-cyan open-project-modal" data-project="quantumsphere">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
+                </button>
+                <a href="#contact" class="btn btn-sm btn-ghost">
+                  <i class="fa-brands fa-github"></i> Codebase
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 4: Java & C Data Structure Suite -->
+          <div class="project-card glass-card" data-tilt data-tilt-glare data-tilt-max-glare="0.35" data-aos="fade-up" data-aos-delay="400">
+            <div class="project-banner banner-code">
+              <div class="project-badge-top">Core CS</div>
+              <div class="project-preview-mockup">
+                <i class="fa-solid fa-network-wired project-banner-icon neon-purple"></i>
+                <div class="mockup-binary-stream">01011001 01100001</div>
+              </div>
+            </div>
+
+            <div class="project-body">
+              <div class="project-tags">
+                <span class="p-tag">Java</span>
+                <span class="p-tag">C Language</span>
+                <span class="p-tag">Algorithms</span>
+                <span class="p-tag">OOP</span>
+              </div>
+              <h3 class="project-title">AlgoCore — Algorithms & Data Structures Suite</h3>
+              <p class="project-desc">
+                A comprehensive collection of optimized sorting algorithms, binary search trees, and custom linked lists engineered in C and Java with time-complexity benchmarks.
+              </p>
+
+              <div class="project-highlights">
+                <div><i class="fa-solid fa-bolt neon-purple"></i> Asymptotic performance analysis</div>
+                <div><i class="fa-solid fa-bolt neon-purple"></i> Object-oriented modular design</div>
+              </div>
+
+              <div class="project-footer">
+                <button class="btn btn-sm btn-neon-purple open-project-modal" data-project="algocore">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Case Study
+                </button>
+                <a href="#contact" class="btn btn-sm btn-ghost">
+                  <i class="fa-brands fa-github"></i> Repository
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CONTACT SECTION ==================== -->
+    <section id="contact" class="section contact-section">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="section-badge"><i class="fa-solid fa-envelope-open-text"></i> Connect</span>
+          <h2 class="section-title">Get In <span class="gradient-text">Touch</span></h2>
+          <p class="section-subtitle">Interested in collaborating or discussing an internship/job opportunity? I'd love to hear from you!</p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Left Column: Contact Cards -->
+          <div class="contact-info-col" data-aos="fade-right">
+            <div class="contact-info-card glass-card">
+              <h3>Let's build something <span class="neon-cyan">impactful</span> together</h3>
+              <p>
+                Whether you have an entry-level Data Analyst opening, a collaborative project, or a technical inquiry, feel free to reach out. I respond promptly!
+              </p>
+
+              <!-- Quick Communication Cards with 1-Click Copy -->
+              <div class="contact-detail-items">
+                <div class="contact-detail-box" data-copy="katikalasiri1729@gmail.com">
+                  <div class="contact-icon-wrap cyan">
+                    <i class="fa-solid fa-envelope"></i>
+                  </div>
+                  <div class="contact-text-wrap">
+                    <span class="contact-lbl">Email Address</span>
+                    <strong class="contact-val">katikalasiri1729@gmail.com</strong>
+                  </div>
+                  <button class="copy-btn" title="Copy Email"><i class="fa-regular fa-copy"></i></button>
+                </div>
+
+                <div class="contact-detail-box" data-copy="9989586306">
+                  <div class="contact-icon-wrap purple">
+                    <i class="fa-solid fa-phone"></i>
+                  </div>
+                  <div class="contact-text-wrap">
+                    <span class="contact-lbl">Phone Number</span>
+                    <strong class="contact-val">+91 9989586306</strong>
+                  </div>
+                  <button class="copy-btn" title="Copy Phone"><i class="fa-regular fa-copy"></i></button>
+                </div>
+
+                <div class="contact-detail-box" data-copy="Choragudi, Andhra Pradesh, India">
+                  <div class="contact-icon-wrap cyan">
+                    <i class="fa-solid fa-map-location-dot"></i>
+                  </div>
+                  <div class="contact-text-wrap">
+                    <span class="contact-lbl">Location</span>
+                    <strong class="contact-val">Choragudi, Andhra Pradesh</strong>
+                  </div>
+                  <button class="copy-btn" title="Copy Address"><i class="fa-regular fa-copy"></i></button>
+                </div>
+              </div>
+
+              <!-- Social Links -->
+              <div class="social-links-bar">
+                <a href="mailto:katikalasiri1729@gmail.com" class="social-link" title="Email" target="_blank">
+                  <i class="fa-solid fa-envelope"></i>
+                </a>
+                <a href="https://linkedin.com" class="social-link" title="LinkedIn Profile" target="_blank" rel="noopener">
+                  <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com" class="social-link" title="GitHub" target="_blank" rel="noopener">
+                  <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://wa.me/919989586306" class="social-link" title="WhatsApp Message" target="_blank" rel="noopener">
+                  <i class="fa-brands fa-whatsapp"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Interactive Animated Contact Form -->
+          <div class="contact-form-col" data-aos="fade-left">
+            <div class="form-wrapper glass-card">
+              <div class="form-header">
+                <h3>Send a Direct Message</h3>
+                <p>Fill in your details and message below</p>
+              </div>
+
+              <form id="contact-form" novalidate>
+                <div class="form-group floating-label-group">
+                  <input type="text" id="user-name" name="name" class="form-input" placeholder=" " required>
+                  <label for="user-name" class="floating-label"><i class="fa-solid fa-user"></i> Your Full Name</label>
+                  <span class="input-glow-line"></span>
+                </div>
+
+                <div class="form-group floating-label-group">
+                  <input type="email" id="user-email" name="email" class="form-input" placeholder=" " required>
+                  <label for="user-email" class="floating-label"><i class="fa-solid fa-envelope"></i> Email Address</label>
+                  <span class="input-glow-line"></span>
+                </div>
+
+                <div class="form-group floating-label-group">
+                  <input type="text" id="user-subject" name="subject" class="form-input" placeholder=" " required>
+                  <label for="user-subject" class="floating-label"><i class="fa-solid fa-tag"></i> Subject / Role Inquiry</label>
+                  <span class="input-glow-line"></span>
+                </div>
+
+                <div class="form-group floating-label-group">
+                  <textarea id="user-message" name="message" rows="4" class="form-input" placeholder=" " required></textarea>
+                  <label for="user-message" class="floating-label"><i class="fa-solid fa-comment-dots"></i> Your Message</label>
+                  <span class="input-glow-line"></span>
+                </div>
+
+                <button type="submit" class="btn btn-neon-gradient w-full magnetic-target" id="submit-btn">
+                  <span class="btn-text">Send Message</span>
+                  <i class="fa-solid fa-paper-plane btn-icon"></i>
+                </button>
+              </form>
+
+              <!-- Success Alert Message -->
+              <div class="form-success-box" id="form-success">
+                <i class="fa-solid fa-circle-check success-icon"></i>
+                <h4>Message Transmitted Successfully!</h4>
+                <p>Thank you for reaching out! K. Siva Naga Kumari will get back to you shortly.</p>
+                <button class="btn btn-sm btn-ghost" id="reset-form-btn">Send Another Message</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== RESUME MODAL (ATS & PRINTABLE) ==================== -->
+  <div class="modal-overlay" id="resume-modal" role="dialog" aria-modal="true" aria-labelledby="resume-modal-title">
+    <div class="modal-container glass-card">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <i class="fa-solid fa-file-invoice neon-cyan"></i>
+          <h3 id="resume-modal-title">K. Siva Naga Kumari — Official Resume</h3>
+        </div>
+        <div class="modal-actions">
+          <button class="btn btn-sm btn-neon-cyan" id="print-resume-btn">
+            <i class="fa-solid fa-print"></i> Print / Save PDF
+          </button>
+          <button class="modal-close-btn" id="close-resume-btn" aria-label="Close modal">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Modal Body / ATS Document View -->
+      <div class="modal-body printable-resume" id="resume-print-area">
+        <!-- Resume Header -->
+        <div class="res-head">
+          <h1 class="res-name">K. SIVA NAGA KUMARI</h1>
+          <p class="res-sub">B.Tech in Computer Science Engineering | Aspiring Data Analyst</p>
+          <div class="res-contact-row">
+            <span><i class="fa-solid fa-phone"></i> +91 9989586306</span>
+            <span>•</span>
+            <span><i class="fa-solid fa-envelope"></i> katikalasiri1729@gmail.com</span>
+            <span>•</span>
+            <span><i class="fa-solid fa-location-dot"></i> Choragudi, Andhra Pradesh</span>
+          </div>
+        </div>
+
+        <hr class="res-divider">
+
+        <!-- Career Objective -->
+        <div class="res-section">
+          <h2 class="res-sec-title">CAREER OBJECTIVE</h2>
+          <p class="res-text">
+            Motivated and detail-oriented B.Tech Computer Science Engineering student with a strong interest in Data Analytics and technology. Seeking an entry-level Data Analyst position where I can apply my analytical thinking, problem-solving abilities, and knowledge of data analysis tools to transform data into meaningful insights. Eager to learn new technologies, contribute to organizational goals, and build a successful career in Data Analytics.
+          </p>
+        </div>
+
+        <!-- Education -->
+        <div class="res-section">
+          <h2 class="res-sec-title">EDUCATION</h2>
+          <div class="res-edu-item">
+            <div class="res-item-header">
+              <strong>B.Tech in Computer Science Engineering</strong>
+              <span class="res-date">Expected 2028</span>
+            </div>
+            <div class="res-institution">Dhanekula Institute of Engineering and Technology</div>
+          </div>
+
+          <div class="res-edu-item">
+            <div class="res-item-header">
+              <strong>Higher Secondary Education (12th) – MPC</strong>
+              <span class="res-date">Passed out: 2022</span>
+            </div>
+            <div class="res-institution">KGJC, Movva</div>
+          </div>
+
+          <div class="res-edu-item">
+            <div class="res-item-header">
+              <strong>Secondary Education (10th)</strong>
+              <span class="res-date">Passed out: 2020</span>
+            </div>
+            <div class="res-institution">ZPH School, Choragudi</div>
+          </div>
+        </div>
+
+        <!-- Technical Skills -->
+        <div class="res-section">
+          <h2 class="res-sec-title">TECHNICAL SKILLS</h2>
+          <ul class="res-list">
+            <li><strong>Programming Languages:</strong> C Language, Java, Python (Basic & Data Structures)</li>
+            <li><strong>Data & Analytical Tools:</strong> Data Analytics, Data Visualization, Relational Databases & SQL, MS Excel</li>
+            <li><strong>Core Competencies:</strong> Algorithms, Object-Oriented Programming (OOP), Analytical Reasoning, Debugging</li>
+          </ul>
+        </div>
+
+        <!-- Personal Skills -->
+        <div class="res-section">
+          <h2 class="res-sec-title">PERSONAL SKILLS</h2>
+          <div class="res-tag-group">
+            <span class="res-badge">Teamwork</span>
+            <span class="res-badge">Communication Skills</span>
+            <span class="res-badge">Problem Solving</span>
+            <span class="res-badge">Positive Attitude</span>
+            <span class="res-badge">Initiative</span>
+          </div>
+        </div>
+
+        <!-- Languages & Hobbies -->
+        <div class="res-two-col">
+          <div class="res-col">
+            <h2 class="res-sec-title">LANGUAGES</h2>
+            <ul class="res-list">
+              <li>Telugu (Native)</li>
+              <li>English (Professional Working Proficiency)</li>
+            </ul>
+          </div>
+          <div class="res-col">
+            <h2 class="res-sec-title">HOBBIES & INTERESTS</h2>
+            <ul class="res-list">
+              <li>Reading Books</li>
+              <li>Playing Games</li>
+              <li>Music</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== PROJECT DETAILS MODAL ==================== -->
+  <div class="modal-overlay" id="project-modal" role="dialog" aria-modal="true">
+    <div class="modal-container glass-card max-w-lg">
+      <div class="modal-header">
+        <h3 id="proj-modal-title" class="neon-cyan">Project Overview</h3>
+        <button class="modal-close-btn" id="close-proj-btn" aria-label="Close modal">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="modal-body" id="proj-modal-body">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <span class="logo-symbol">&lt;/&gt;</span>
+        <span class="logo-text">K. SIVA NAGA KUMARI</span>
+        <p class="footer-tagline">Building data-driven intelligence and robust software with passion.</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="#hero">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Journey</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 K. Siva Naga Kumari. All Rights Reserved. Designed with Three.js & Modern Web Standards.</p>
+        <button class="back-to-top-btn" id="back-to-top" aria-label="Back to Top">
+          <i class="fa-solid fa-arrow-up"></i>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Notification Toast -->
+  <div class="toast-notification" id="toast">
+    <i class="fa-solid fa-circle-check toast-icon"></i>
+    <span id="toast-message">Copied to clipboard!</span>
+  </div>
+
+  <!-- CDNs: Three.js, GSAP, ScrollTrigger, VanillaTilt, AOS, Canvas Confetti -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+  <!-- Custom Scripts -->
+  <script src="three-background.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
